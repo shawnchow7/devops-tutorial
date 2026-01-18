@@ -9,10 +9,13 @@ services:
       - "5005:5005"
 
   frontend:
-    build: ./client
+    build:
+      context: ./client
+      args:
+        VITE_API_URL: http://3.107.56.15:5005/api
+
     container_name: frontend
-    env_file:
-      - ./client/.env
+
 
     ports:
      - "5173:5173"
